@@ -78,14 +78,18 @@ contract PrivateLogic {
             basicData12
         );
 
-        managedData.checkData0107Enabled()
-        .checkData0106Positive()
-        .checkData02()
-        .checkData03()
-        .checkData04First()
-        .checkData04Second();
-
-        return managedData.result;
+        return managedData
+            .checkData0107Enabled()
+            .checkData0106Positive()
+            .checkData02()
+            .checkData03()
+            .checkData04First()
+            .checkData04Second()
+            .checkData05First()
+            .checkData05Second()
+            .checkData05Third()
+            .checkData05Fourth()
+            .result;
     }
 
 }

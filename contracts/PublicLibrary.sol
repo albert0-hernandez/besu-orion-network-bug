@@ -93,8 +93,9 @@ library PublicLibrary {
         }
 
         managedData_.result = (
-            managedData_.basicData04.data1 + managedData_.basicData04.data2 + managedData_.basicData04.data3
-        ) > 0 || (managedData_.basicData04.data7 && !managedData_.basicData04.data8);
+            managedData_.basicData04.data7 &&
+            managedData_.basicData04.data1 + managedData_.basicData04.data2 + managedData_.basicData04.data3 > 0
+        ) || managedData_.basicData04.data8;
     }
 
     function checkData04Second(ManagedData memory _managedData) public pure returns (ManagedData memory managedData_) {
@@ -105,9 +106,61 @@ library PublicLibrary {
         }
 
         managedData_.result = (
-        managedData_.basicData04.data4 + managedData_.basicData04.data5 + managedData_.basicData04.data6
-        ) > 0 || (!managedData_.basicData04.data7 && managedData_.basicData04.data8);
+            managedData_.basicData04.data8 &&
+            managedData_.basicData04.data4 + managedData_.basicData04.data5 + managedData_.basicData04.data6 > 0
+        ) || managedData_.basicData04.data7;
     }
 
+    function checkData05First(ManagedData memory _managedData) public pure returns (ManagedData memory managedData_) {
+        managedData_ = _managedData;
+
+        if (!managedData_.result) {
+            return managedData_;
+        }
+
+        managedData_.result = (
+            int(managedData_.basicData05.data1) + managedData_.basicData05.data5 < 0 &&
+            managedData_.basicData05.data3
+        );
+    }
+
+    function checkData05Second(ManagedData memory _managedData) public pure returns (ManagedData memory managedData_) {
+        managedData_ = _managedData;
+
+        if (!managedData_.result) {
+            return managedData_;
+        }
+
+        managedData_.result = (
+            int(managedData_.basicData05.data2) + managedData_.basicData05.data6 == 0 &&
+            !managedData_.basicData05.data4
+        );
+    }
+
+    function checkData05Third(ManagedData memory _managedData) public pure returns (ManagedData memory managedData_) {
+        managedData_ = _managedData;
+
+        if (!managedData_.result) {
+            return managedData_;
+        }
+
+        managedData_.result = (
+            managedData_.basicData05.data10 < 0 &&
+            !managedData_.basicData05.data11
+        );
+    }
+
+    function checkData05Fourth(ManagedData memory _managedData) public pure returns (ManagedData memory managedData_) {
+        managedData_ = _managedData;
+
+        if (!managedData_.result) {
+            return managedData_;
+        }
+
+        managedData_.result = (
+            managedData_.basicData05.data12 > 0 &&
+            managedData_.basicData05.data13
+        );
+    }
 
 }

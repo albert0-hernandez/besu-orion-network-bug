@@ -49,6 +49,55 @@ async function main() {
   console.log(`publicLogic: {storage: ${publicStorage.address}, logic: ${publicLogic.address}}`);
   console.log(`privateLogic: {storage: ${privateStorage.address}, logic: ${privateLogic.address}}`);
 
+  await publicLogic.setBasicData01({
+    data1: "data1",
+    data2: "data2",
+    data3: 985,
+    data4: 980,
+    data5: "data5",
+    data6: 975,
+    data7: false,
+    data8: 970,
+    data9: true
+  });
+  await publicLogic.setBasicData02({
+    data1: 15,
+    data2: 20,
+    data3: 25
+  });
+  await publicLogic.setBasicData03({
+    data1: 50,
+    data2: 45,
+    data3: 40,
+    data4: 35,
+    data5: 30
+  });
+  await publicLogic.setBasicData04({
+    data1: 90,
+    data2: 95,
+    data3: 100,
+    data4: 0,
+    data5: 0,
+    data6: 0,
+    data7: true,
+    data8: false
+  });
+  await publicLogic.setBasicData05({
+    data1: 1000,
+    data2: 100,
+    data3: true,
+    data4: false,
+    data5: -10000,
+    data6: -100,
+    data7: true,
+    data8: false,
+    data9: true,
+    data10: -10,
+    data11: false,
+    data12: 10,
+    data13: true
+  })
+
   await privateLogic.setBasicData11({
     data1: publicLogic.address,
     data2: publicLibrary.address,
