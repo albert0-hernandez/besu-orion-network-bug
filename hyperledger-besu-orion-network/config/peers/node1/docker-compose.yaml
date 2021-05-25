@@ -1,0 +1,47 @@
+version: "2.1"
+services:
+    node1-orion:
+        extends:
+            file: "./templates/docker-compose-microservices.yaml"
+            service: "orion"
+        container_name: node1-orion
+        environment:
+            - ORION_NODEURL=http://172.16.100.22:9000
+            - ORION_OTHERNODES=http://172.16.100.21:9000
+            - ORION_CLIENTURL=http://172.16.100.22:10000
+        ports:
+            - "9002:9000"
+        volumes:
+            - node1-orion:/data
+            - ./peers/node1/orion:/keys
+        networks:
+            afb:
+                ipv4_address: 172.16.100.22
+
+    node1-node:
+        extends:
+            file: "./templates/docker-compose-microservices.yaml"
+            service: "besu-regular"
+        container_name: node1-node
+        environment:
+            - BESU_P2P_HOST=172.16.100.12
+            #Privacy
+            - PANTHEON_PRIVACY_MARKER_TRANSACTION_SIGNING_KEY_FILE=/privacy-marker-account
+            - BESU_PRIVACY_URL=http://172.16.100.22:10000
+            - BESU_PRIVACY_PUBLIC_KEY_FILE=/orion/orion.pub
+        ports:
+            - "21002:21000/tcp" #discovery
+            - "21002:21000/udp" #discovery
+            - "22002:22000"     #rpc
+        volumes:
+            - node1-node:/data/node/database
+            - ./peers/node1/priv:/data/node/key
+            #Privacy
+            - ./peers/node1/privacy-marker-account:/privacy-marker-account
+            - ./peers/node1/orion:/orion
+        networks:
+            afb:
+                ipv4_address: 172.16.100.12
+volumes:
+    node1-node:
+    node1-orion:
