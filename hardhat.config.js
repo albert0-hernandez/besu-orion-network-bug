@@ -26,6 +26,9 @@ module.exports = {
       },
       evmVersion: "istanbul"
     }
+  },
+  mocha: {
+    timeout: 300000 //milliseconds
   }
 };
 
