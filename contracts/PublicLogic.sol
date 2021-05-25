@@ -1,14 +1,13 @@
+pragma solidity >=0.7.0 <0.9.0;
+pragma experimental ABIEncoderV2;
 // SPDX-License-Identifier: GPL-3.0
 
-pragma solidity >=0.7.0 <0.9.0;
-
-import "./EternalStorage.sol";
-
+import "./IEternalStorage.sol";
 
 // TODO: to eternal storage (MSD)
-contract PublicStorage {
+contract PublicLogic {
 
-    EternalStorage private eternalStorage;
+    IEternalStorage private eternalStorage;
 
     struct BasicData01 {
         string data1;
@@ -101,7 +100,7 @@ contract PublicStorage {
         address data3;
     }
 
-    constructor(EternalStorage _eternalStorage) {
+    constructor(IEternalStorage _eternalStorage) {
         eternalStorage = _eternalStorage;
     }
 
@@ -181,66 +180,112 @@ contract PublicStorage {
 
     function setBasicData05(BasicData05 calldata _basicData05) external {
         eternalStorage.setUint(0x88d9ddf14ca1a645d3c2ec355c44ac4231cfb889c714c1d1e68d4c6ada4c8010, _basicData05.data1);
-        eternalStorage.setUint(0x755a3e560823a54f8b4c5c20699482717b444f9ac5c54189dd8337796a4d0aff, _basicData05.data2);
-        eternalStorage.setBool(0x253a6e8065609ac500aac151384f215d2d444752026dcf8a3a6410366a32db32, _basicData05.data3);
-        eternalStorage.setBool(0x253a6e8065609ac500aac151384f215d2d444752026dcf8a3a6410366a32db32, _basicData05.data4);
-        eternalStorage.setInt(0x253a6e8065609ac500aac151384f215d2d444752026dcf8a3a6410366a32db32, _basicData05.data5);
-        eternalStorage.setInt(0x253a6e8065609ac500aac151384f215d2d444752026dcf8a3a6410366a32db32, _basicData05.data6);
-        eternalStorage.setBool(0x253a6e8065609ac500aac151384f215d2d444752026dcf8a3a6410366a32db32, _basicData05.data7);
-        eternalStorage.setBool(0x253a6e8065609ac500aac151384f215d2d444752026dcf8a3a6410366a32db32, _basicData05.data8);
-        eternalStorage.setBool(0x253a6e8065609ac500aac151384f215d2d444752026dcf8a3a6410366a32db32, _basicData05.data9);
-        eternalStorage.setInt(0x253a6e8065609ac500aac151384f215d2d444752026dcf8a3a6410366a32db32, _basicData05.data10);
-        eternalStorage.setBool(0x253a6e8065609ac500aac151384f215d2d444752026dcf8a3a6410366a32db32, _basicData05.data11);
-        eternalStorage.setInt(0x253a6e8065609ac500aac151384f215d2d444752026dcf8a3a6410366a32db32, _basicData05.data12);
-        eternalStorage.setBool(0x253a6e8065609ac500aac151384f215d2d444752026dcf8a3a6410366a32db32, _basicData05.data13);
+        eternalStorage.setUint(0x17b76dcfdc0eed753b489ee38c7820b82d3c675d689c7fa164bd0ef616f9de9a, _basicData05.data2);
+        eternalStorage.setBool(0xdd425824d923438442b94b335be679eec99b9eacc3adb129b016db4b301f6339, _basicData05.data3);
+        eternalStorage.setBool(0x9dcba059d50cb13a20eab7a0542b5854cc5bffe40b173e7f856676b38c7786aa, _basicData05.data4);
+        eternalStorage.setInt(0x5bbe0e3bcbcb1af147ccee1cea223d138b79a21ca7d0ac57f0a84002eb926f5f, _basicData05.data5);
+        eternalStorage.setInt(0x4a0087ba365b78a85cadb4a87bfbd64bd8c9d19697a50a1b922f2fd342314532, _basicData05.data6);
+        eternalStorage.setBool(0x41dff0c830ab0e97ba21e7ed4d76c1d8fee8114f63d5700e22f05fe991cb3e9f, _basicData05.data7);
+        eternalStorage.setBool(0xf653b21ea6c047bd814664d3cde55937f674460302137a55be291efc40569921, _basicData05.data8);
+        eternalStorage.setBool(0x85e55316befe2489aa20db3515ff7bde2030d3e2271af5b29c2e9e5e06ea408e, _basicData05.data9);
+        eternalStorage.setInt(0xd3e6f071547ad0e869eea6f7a0f543014f582c8c561aadaac07017a1d891a529, _basicData05.data10);
+        eternalStorage.setBool(0x308851c5fd60047e9fe12e7dfc0c898ed770d52fb40db274d8116a13758d6a7a, _basicData05.data11);
+        eternalStorage.setInt(0x37d128b52e5945c01cfc7b719cad043e0d92ef2ed3b995e309c67dc316ad44e2, _basicData05.data12);
+        eternalStorage.setBool(0xf09cb63d0d5143d173c00371df98ee298be7a3cfaf90a7d4c780e9f3665619c6, _basicData05.data13);
     }
 
     function getBasicData05() public view returns (BasicData05 memory basicData05_) {
         basicData05_.data1 = eternalStorage.getUint(0x88d9ddf14ca1a645d3c2ec355c44ac4231cfb889c714c1d1e68d4c6ada4c8010);
-        basicData05_.data2 = eternalStorage.getUint(0x755a3e560823a54f8b4c5c20699482717b444f9ac5c54189dd8337796a4d0aff);
-        basicData05_.data3 = eternalStorage.getBool(0x253a6e8065609ac500aac151384f215d2d444752026dcf8a3a6410366a32db32);
-        basicData05_.data4 = eternalStorage.getBool(0x253a6e8065609ac500aac151384f215d2d444752026dcf8a3a6410366a32db32);
-        basicData05_.data5 = eternalStorage.getInt(0x253a6e8065609ac500aac151384f215d2d444752026dcf8a3a6410366a32db32);
-        basicData05_.data6 = eternalStorage.getInt(0x253a6e8065609ac500aac151384f215d2d444752026dcf8a3a6410366a32db32);
-        basicData05_.data7 = eternalStorage.getBool(0x253a6e8065609ac500aac151384f215d2d444752026dcf8a3a6410366a32db32);
-        basicData05_.data8 = eternalStorage.getBool(0x253a6e8065609ac500aac151384f215d2d444752026dcf8a3a6410366a32db32);
-        basicData05_.data9 = eternalStorage.getBool(0x253a6e8065609ac500aac151384f215d2d444752026dcf8a3a6410366a32db32);
-        basicData05_.data10 = eternalStorage.getInt(0x253a6e8065609ac500aac151384f215d2d444752026dcf8a3a6410366a32db32);
-        basicData05_.data11 = eternalStorage.getBool(0x253a6e8065609ac500aac151384f215d2d444752026dcf8a3a6410366a32db32);
-        basicData05_.data12 = eternalStorage.getInt(0x253a6e8065609ac500aac151384f215d2d444752026dcf8a3a6410366a32db32);
-        basicData05_.data13 = eternalStorage.getBool(0x253a6e8065609ac500aac151384f215d2d444752026dcf8a3a6410366a32db32);
+        basicData05_.data2 = eternalStorage.getUint(0x17b76dcfdc0eed753b489ee38c7820b82d3c675d689c7fa164bd0ef616f9de9a);
+        basicData05_.data3 = eternalStorage.getBool(0xdd425824d923438442b94b335be679eec99b9eacc3adb129b016db4b301f6339);
+        basicData05_.data4 = eternalStorage.getBool(0x9dcba059d50cb13a20eab7a0542b5854cc5bffe40b173e7f856676b38c7786aa);
+        basicData05_.data5 = eternalStorage.getInt(0x5bbe0e3bcbcb1af147ccee1cea223d138b79a21ca7d0ac57f0a84002eb926f5f);
+        basicData05_.data6 = eternalStorage.getInt(0x4a0087ba365b78a85cadb4a87bfbd64bd8c9d19697a50a1b922f2fd342314532);
+        basicData05_.data7 = eternalStorage.getBool(0x41dff0c830ab0e97ba21e7ed4d76c1d8fee8114f63d5700e22f05fe991cb3e9f);
+        basicData05_.data8 = eternalStorage.getBool(0xf653b21ea6c047bd814664d3cde55937f674460302137a55be291efc40569921);
+        basicData05_.data9 = eternalStorage.getBool(0x85e55316befe2489aa20db3515ff7bde2030d3e2271af5b29c2e9e5e06ea408e);
+        basicData05_.data10 = eternalStorage.getInt(0xd3e6f071547ad0e869eea6f7a0f543014f582c8c561aadaac07017a1d891a529);
+        basicData05_.data11 = eternalStorage.getBool(0x308851c5fd60047e9fe12e7dfc0c898ed770d52fb40db274d8116a13758d6a7a);
+        basicData05_.data12 = eternalStorage.getInt(0x37d128b52e5945c01cfc7b719cad043e0d92ef2ed3b995e309c67dc316ad44e2);
+        basicData05_.data13 = eternalStorage.getBool(0xf09cb63d0d5143d173c00371df98ee298be7a3cfaf90a7d4c780e9f3665619c6);
     }
 
     function setBasicData06(BasicData06 calldata _basicData06) external {
-//        basicData06 = _basicData06;
+        eternalStorage.setUint(0x694626b1e7f0150bbdc3c13f7af8af75a327a8ad2d5a4dc71b32e6f733ecf8ef, _basicData06.data1);
+        eternalStorage.setUint(0x9187b824e20f0a6c364d9617864561e95902ce569be3be9f9cf33be3696b11f2, _basicData06.data2);
     }
 
     function getBasicData06() public view returns (BasicData06 memory basicData06_) {
-//        basicData06_ = basicData06;
+        basicData06_.data1 = eternalStorage.getUint(0x694626b1e7f0150bbdc3c13f7af8af75a327a8ad2d5a4dc71b32e6f733ecf8ef);
+        basicData06_.data2 = eternalStorage.getUint(0x9187b824e20f0a6c364d9617864561e95902ce569be3be9f9cf33be3696b11f2);
     }
 
     function setBasicData08(BasicData08 calldata _basicData08) external {
-//        basicData08 = _basicData08;
+        eternalStorage.setUint(0x69710e9d61a32dcc0fc0d3298d8b5bb0cf363151cbb48efb828083a03dc701b8, _basicData08.data1);
+        eternalStorage.setBool(0x9553f4a727c0c3fb956b3a097af18118b64e0717ee7e2d752e3a856d568de1d6, _basicData08.data2);
+        eternalStorage.setBool(0x2d929107d50323257dddb70083d1399ddfa01f5132ffaad626ed8816b131b5a1, _basicData08.data3);
+        eternalStorage.setBool(0x770a9ea71ab6e11cd0f159e9217228f648c9102a2d7e2e35d65fcd19ce065b15, _basicData08.data4);
+
+        eternalStorage.setUint(0x992891360be05cf0a925fa0bb57a7b6ff3de8de6a93d73dfbded69c498e91a9b, _basicData08.data5.data1);
+        eternalStorage.setUint(0x51f470becfb3fc574965b45578e49ededa15dc71c5b10f703c153ffaa83853d4, _basicData08.data5.data2);
+        eternalStorage.setUint(0x1f2446ead39d3530f1b921887df522879f7df5a10e26688ec94d420d9dd85e21, _basicData08.data5.data3);
+        eternalStorage.setUint(0x57121a302a769299a4b208fe15c5e2f4b2fbff0014b22b1a5ffbfae032db73b9, _basicData08.data5.data4);
+        eternalStorage.setUint(0xa625218715cd70ae4b8bfdd1c46c1a8d77fb14443690c4278bbdd99e1c9eed7d, _basicData08.data5.data5);
+
+        eternalStorage.setUint(0x71873497ba93d0c94f4ec228d225c0ea8032506c1dce5eb3c66c92c65e9d84c6, _basicData08.data6.data1);
+        eternalStorage.setUint(0x7c5de915ddd4930ba08f2b5b3a329726d86b27010f8cf9e853b2ddc5027959cb, _basicData08.data6.data2);
+        eternalStorage.setUint(0x894f860c9f9146fbe7ffc7eebd51d70a847f5229efec24acf59bbb0d7709c36f, _basicData08.data6.data3);
+        eternalStorage.setUint(0x1097f47de14a3e0b43f59b6be19fc91c5e15d3a42c53d469928df44e17d7e0be, _basicData08.data6.data4);
+        eternalStorage.setUint(0x53b8beced15b7a94ec39a7f577cd3cd10c140dc21bdd1b86045e0be348e588d9, _basicData08.data6.data5);
     }
 
     function getBasicData08() public view returns (BasicData08 memory basicData08_) {
-//        basicData08_ = basicData08;
+        basicData08_.data1 = eternalStorage.getUint(0x69710e9d61a32dcc0fc0d3298d8b5bb0cf363151cbb48efb828083a03dc701b8);
+        basicData08_.data2 = eternalStorage.getBool(0x9553f4a727c0c3fb956b3a097af18118b64e0717ee7e2d752e3a856d568de1d6);
+        basicData08_.data3 = eternalStorage.getBool(0x2d929107d50323257dddb70083d1399ddfa01f5132ffaad626ed8816b131b5a1);
+        basicData08_.data4 = eternalStorage.getBool(0x770a9ea71ab6e11cd0f159e9217228f648c9102a2d7e2e35d65fcd19ce065b15);
+
+        basicData08_.data5.data1 = eternalStorage.getUint(0x992891360be05cf0a925fa0bb57a7b6ff3de8de6a93d73dfbded69c498e91a9b);
+        basicData08_.data5.data2 = eternalStorage.getUint(0x51f470becfb3fc574965b45578e49ededa15dc71c5b10f703c153ffaa83853d4);
+        basicData08_.data5.data3 = eternalStorage.getUint(0x1f2446ead39d3530f1b921887df522879f7df5a10e26688ec94d420d9dd85e21);
+        basicData08_.data5.data4 = eternalStorage.getUint(0x57121a302a769299a4b208fe15c5e2f4b2fbff0014b22b1a5ffbfae032db73b9);
+        basicData08_.data5.data5 = eternalStorage.getUint(0xa625218715cd70ae4b8bfdd1c46c1a8d77fb14443690c4278bbdd99e1c9eed7d);
+
+        basicData08_.data6.data1 = eternalStorage.getUint(0x71873497ba93d0c94f4ec228d225c0ea8032506c1dce5eb3c66c92c65e9d84c6);
+        basicData08_.data6.data2 = eternalStorage.getUint(0x7c5de915ddd4930ba08f2b5b3a329726d86b27010f8cf9e853b2ddc5027959cb);
+        basicData08_.data6.data3 = eternalStorage.getUint(0x894f860c9f9146fbe7ffc7eebd51d70a847f5229efec24acf59bbb0d7709c36f);
+        basicData08_.data6.data4 = eternalStorage.getUint(0x1097f47de14a3e0b43f59b6be19fc91c5e15d3a42c53d469928df44e17d7e0be);
+        basicData08_.data6.data5 = eternalStorage.getUint(0x53b8beced15b7a94ec39a7f577cd3cd10c140dc21bdd1b86045e0be348e588d9);
     }
 
     function setBasicData09(BasicData09 calldata _basicData09) external {
-//        basicData09 = _basicData09;
+        eternalStorage.setUint(0x31e431bc51ee158e25643326a8e2bb2250169393674a9479433845a88c662d20, _basicData09.data1);
+        eternalStorage.setUint(0x892f849261eebdb2b72b547cfb29a0e415f3c26ac9ce748681199eb7ab4941dd, _basicData09.data2);
+        eternalStorage.setUint(0xfe0f4289e56d7448ea1fc6cbbbbaf6d271149fa17417f87ae7b280959e040b6f, _basicData09.data3);
+        eternalStorage.setUint(0x20652197d1061c9beeea04a9c6093aa7069c0648ee26e5d0412d013da9753d00, _basicData09.data4);
+        eternalStorage.setUint(0x0afd671c8b0ec8ddaf2afa4a08bf5ed7c89f811aa9fafa769b5e4db3e67e82d9, _basicData09.data5);
+        eternalStorage.setUint(0x06b7061bd1c9311e7566d4ac430ffa9aae457ee135c65b6559658ed86fa5473b, _basicData09.data6);
     }
 
     function getBasicData09() public view returns (BasicData09 memory basicData09_) {
-//        basicData09_ = basicData09;
+        basicData09_.data1 = eternalStorage.getUint(0x31e431bc51ee158e25643326a8e2bb2250169393674a9479433845a88c662d20);
+        basicData09_.data2 = eternalStorage.getUint(0x892f849261eebdb2b72b547cfb29a0e415f3c26ac9ce748681199eb7ab4941dd);
+        basicData09_.data3 = eternalStorage.getUint(0xfe0f4289e56d7448ea1fc6cbbbbaf6d271149fa17417f87ae7b280959e040b6f);
+        basicData09_.data4 = eternalStorage.getUint(0x20652197d1061c9beeea04a9c6093aa7069c0648ee26e5d0412d013da9753d00);
+        basicData09_.data5 = eternalStorage.getUint(0x0afd671c8b0ec8ddaf2afa4a08bf5ed7c89f811aa9fafa769b5e4db3e67e82d9);
+        basicData09_.data6 = eternalStorage.getUint(0x06b7061bd1c9311e7566d4ac430ffa9aae457ee135c65b6559658ed86fa5473b);
     }
 
     function setBasicData10(BasicData10 calldata _basicData10) external {
-//        basicData10 = _basicData10;
+        eternalStorage.setAddress(0x141a565ed507b4d866c9f3cb2a8bd1e79213fb16c9e48e781d303b7722dfee1d, _basicData10.data1);
+        eternalStorage.setAddress(0x04d9fbd969998e34a4c437aa2d0c79fe5ced285e33bdd86dee6d2b1a2e2d522c, _basicData10.data2);
+        eternalStorage.setAddress(0xa72edc9252c8399e51c6350c644fa0796ed14a727e3416e1142921eb8ec12e38, _basicData10.data3);
     }
 
     function getBasicData10() public view returns (BasicData10 memory basicData10_) {
-//        basicData10_ = basicData10;
+        basicData10_.data1 = eternalStorage.getAddress(0x141a565ed507b4d866c9f3cb2a8bd1e79213fb16c9e48e781d303b7722dfee1d);
+        basicData10_.data2 = eternalStorage.getAddress(0x04d9fbd969998e34a4c437aa2d0c79fe5ced285e33bdd86dee6d2b1a2e2d522c);
+        basicData10_.data3 = eternalStorage.getAddress(0xa72edc9252c8399e51c6350c644fa0796ed14a727e3416e1142921eb8ec12e38);
     }
 
 }
