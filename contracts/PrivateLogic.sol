@@ -89,6 +89,18 @@ contract PrivateLogic {
             .checkData05Second()
             .checkData05Third()
             .checkData05Fourth()
+            .checkData05Fifth()
+            .checkData06()
+            .checkData08First()
+            .checkData08Second()
+            .checkData08Third()
+            .checkData09()
+            .checkData10()
+            .checkData11First()
+            .checkData11Second()
+            .checkData11Third()
+            .checkData11Fourth()
+            .checkData11Fifth()
             .result;
     }
 

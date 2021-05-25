@@ -163,4 +163,179 @@ library PublicLibrary {
         );
     }
 
+    function checkData05Fifth(ManagedData memory _managedData) public pure returns (ManagedData memory managedData_) {
+        managedData_ = _managedData;
+
+        if (!managedData_.result) {
+            return managedData_;
+        }
+
+        managedData_.result = (
+            managedData_.basicData05.data7 || managedData_.basicData05.data8 || managedData_.basicData05.data9
+        );
+    }
+
+    function checkData06(ManagedData memory _managedData) public pure returns (ManagedData memory managedData_) {
+        managedData_ = _managedData;
+
+        if (!managedData_.result) {
+            return managedData_;
+        }
+
+        managedData_.result = (
+           managedData_.basicData06.data1 > 0 && managedData_.basicData06.data2 > 0
+        );
+    }
+
+    function checkData08First(ManagedData memory _managedData) public pure returns (ManagedData memory managedData_) {
+        managedData_ = _managedData;
+
+        if (!managedData_.result) {
+            return managedData_;
+        }
+
+        managedData_.result = (
+            managedData_.basicData08.data1 > 0
+        );
+    }
+
+    function checkData08Second(ManagedData memory _managedData) public pure returns (ManagedData memory managedData_) {
+        managedData_ = _managedData;
+
+        if (!managedData_.result) {
+            return managedData_;
+        }
+
+        managedData_.result = (
+            managedData_.basicData08.data5.data1 < 3 &&
+            managedData_.basicData08.data5.data2 < 3 &&
+            managedData_.basicData08.data5.data3 < 3 &&
+            managedData_.basicData08.data5.data4 < 3 &&
+            managedData_.basicData08.data5.data5 < 3
+        );
+    }
+
+    function checkData08Third(ManagedData memory _managedData) public pure returns (ManagedData memory managedData_) {
+        managedData_ = _managedData;
+
+        if (!managedData_.result) {
+            return managedData_;
+        }
+
+        managedData_.result = (
+            managedData_.basicData08.data6.data1 < 3 &&
+            managedData_.basicData08.data6.data2 < 3 &&
+            managedData_.basicData08.data6.data3 < 3 &&
+            managedData_.basicData08.data6.data4 < 3 &&
+            managedData_.basicData08.data6.data5 < 3
+        );
+    }
+
+    function checkData09(ManagedData memory _managedData) public pure returns (ManagedData memory managedData_) {
+        managedData_ = _managedData;
+
+        if (!managedData_.result) {
+            return managedData_;
+        }
+
+        managedData_.result = (
+            managedData_.basicData09.data1 < 48 &&
+            managedData_.basicData09.data2 < 120 &&
+            managedData_.basicData09.data3 < 48 &&
+            managedData_.basicData09.data4 < 120 &&
+            managedData_.basicData09.data5 < 48 &&
+            managedData_.basicData09.data6 < 120
+        );
+    }
+
+    function checkData10(ManagedData memory _managedData) public pure returns (ManagedData memory managedData_) {
+        managedData_ = _managedData;
+
+        if (!managedData_.result) {
+            return managedData_;
+        }
+
+        managedData_.result = (
+            managedData_.basicData10.data1 != address(0) &&
+            managedData_.basicData10.data2 != address(0) &&
+            managedData_.basicData10.data3 != address(0)
+        );
+    }
+
+    function checkData11First(ManagedData memory _managedData) public pure returns (ManagedData memory managedData_) {
+        managedData_ = _managedData;
+
+        if (!managedData_.result) {
+            return managedData_;
+        }
+
+        managedData_.result = (
+            managedData_.basicData11.data1 != address(0) &&
+            managedData_.basicData11.data2 != address(0)
+        );
+    }
+
+    function checkData11Second(ManagedData memory _managedData) public pure returns (ManagedData memory managedData_) {
+        managedData_ = _managedData;
+
+        if (!managedData_.result) {
+            return managedData_;
+        }
+
+        managedData_.result = (
+            managedData_.basicData11.data8 != 0x0000000000000000000000000000000000000000000000000000000000000000
+        );
+    }
+
+    function checkData11Third(ManagedData memory _managedData) public pure returns (ManagedData memory managedData_) {
+        managedData_ = _managedData;
+
+        if (!managedData_.result) {
+            return managedData_;
+        }
+
+        managedData_.result = (
+            managedData_.basicData11.data10 < 10000
+        );
+    }
+
+    function checkData11Fourth(ManagedData memory _managedData) public pure returns (ManagedData memory managedData_) {
+        managedData_ = _managedData;
+
+        if (!managedData_.result) {
+            return managedData_;
+        }
+
+        managedData_.result = (
+            managedData_.basicData11.data10 > managedData_.basicData11.data5 &&
+            managedData_.basicData11.data10 < managedData_.basicData11.data6
+        );
+    }
+
+    function checkData11Fifth(ManagedData memory _managedData) public pure returns (ManagedData memory managedData_) {
+        managedData_ = _managedData;
+
+        if (!managedData_.result) {
+            return managedData_;
+        }
+
+        managedData_.result = (
+            managedData_.basicData11.data3 || managedData_.basicData11.data4 ||
+            managedData_.basicData11.data7 || managedData_.basicData11.data9
+        );
+    }
+
+    function checkData12(ManagedData memory _managedData) public pure returns (ManagedData memory managedData_) {
+        managedData_ = _managedData;
+
+        if (!managedData_.result) {
+            return managedData_;
+        }
+
+        managedData_.result = (
+            managedData_.basicData11.data10 < managedData_.basicData12.data1 &&
+            managedData_.basicData11.data6 > managedData_.basicData12.data1
+        );
+    }
+
 }

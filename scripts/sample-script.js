@@ -96,7 +96,45 @@ async function main() {
     data11: false,
     data12: 10,
     data13: true
-  })
+  });
+  await publicLogic.setBasicData06({
+    data1: 1000,
+    data2: 100
+  });
+  await publicLogic.setBasicData08({
+    data1: 1000,
+    data2: true,
+    data3: false,
+    data4: true,
+    data5: {
+      data1: 1,
+      data2: 2,
+      data3: 0,
+      data4: 1,
+      data5: 2
+    },
+    data6: {
+      data1: 2,
+      data2: 1,
+      data3: 0,
+      data4: 2,
+      data5: 1
+    }
+  });
+  await publicLogic.setBasicData09({
+    data1: 12,
+    data2: 0,
+    data3: 22,
+    data4: 10,
+    data5: 0,
+    data6: 59,
+  });
+
+  await publicLogic.setBasicData10({
+    data1: publicLogic.address,
+    data2: publicLibrary.address,
+    data3: publicStorage.address,
+  });
 
   await privateLogic.setBasicData11({
     data1: publicLogic.address,
@@ -104,13 +142,12 @@ async function main() {
     data3: true,
     data4: false,
     data5: 15,
-    data6: 20,
+    data6: 75,
     data7: true,
     data8: "0x736f6d6520737472696e67206f76657220333220636861726163746572732069",
     data9: false,
     data10: 25,
   });
-
   await privateLogic.setBasicData12({
     data1: 30
   });
