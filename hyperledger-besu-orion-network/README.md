@@ -19,6 +19,7 @@ The script uses the same configuration stored in the config/peers folder, so if 
 
 ```
 cd scripts/setup-privacy-groups
+npm install
 node index.js
 ```
 
@@ -32,4 +33,4 @@ All besu nodes have the following JVM options set by default, set in file config
 
 `-Xms2G -Xmx4G -XX:NewRatio=1 -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=8888 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false`
 
-By default, only node0 has the port 8888 open.
+By default, only node0 has the port 8888 opened.

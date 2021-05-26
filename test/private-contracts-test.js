@@ -5,16 +5,10 @@ const PublicLibraryArtf = hre.artifacts.readArtifact("PublicLibrary");
 
 const EEAClient = require("web3-eea");
 const Web3 = require("web3");
-
-// const privateFrom = "DyHFgXeTcBQOdlWun2YRb9IBqGlo/9vsWw4NBIX5UXk="
-// const privateKey = "9e5c50f9c8d81cadcdd53da98ecb466bdeb0e148b7e062b0d673938b3bcddbe8"
-// const privacyGroupId = "U1U1SExuTmxiR1l3TURBd01EQXdNREF3TURBd01EQXc="
-// const host = "http://127.0.0.1:11128";
-// const chainId = 11111111;
-
+//The values of some of the following constants can be found inside hyperledger-besu-orion-network folder
 const privateFrom = "Pvoq/2SSAeECW5NWk8HDNw+goyunM4fO6c98Hcb8sWE=" // config/peers/node0/orion/orion.pub 
 const privateKey = "9e5c50f9c8d81cadcdd53da98ecb466bdeb0e148b7e062b0d673938b3bcddbe8" //Random key
-const privacyGroupId = "UVZoQkxVbE9SekF3TURBd01EQXdNREF3TURBd01EQXc=" //blockchain-smartcontracts project, in environment/env_besu.json
+const privacyGroupId = "UVZoQkxVbE9SekF3TURBd01EQXdNREF3TURBd01EQXc="
 const host = "http://127.0.0.1:22001"; //configured in config/peers/node0/docker-compose.yaml
 const chainId = 2021; //from config/network/genesis.json
 
@@ -135,7 +129,6 @@ async function privCall(abi, privacyGroupId, address, method, isGanache = false,
       blockNumber: blockNumber
   };
 
-  console.log(functionCall);
   let result;
   if (isGanache) {
       result = await eea.eth.call(functionCall);
