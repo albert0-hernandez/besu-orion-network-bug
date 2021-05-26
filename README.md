@@ -1,5 +1,5 @@
 # 1. Run the blockchain network
-Read the file hyperledger-besu-orion-network/README.md file for mor information.
+Read the file hyperledger-besu-orion-network/README.md file for more information.
 
 # 2. Run the test
 
@@ -18,7 +18,7 @@ The private-contracts-test do the following:
 All blockchain requests are sent to node0 (http://localhost:22001).
 
 # Change test configuration
-Feel free to change the test setup by modifying the configuration constants in the following lines:
+Feel free to change the test setup by modifying the configuration constants in the following lines of the test/private-contracts-test.js file:
 
 ```
 //The values of some of the following constants can be found inside hyperledger-besu-orion-network folder
