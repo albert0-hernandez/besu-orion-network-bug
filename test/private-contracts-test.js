@@ -71,7 +71,7 @@ async function deployContracts() {
     //Deploy library and link private logic
     console.log("Deploy public library");
     publicLibraryAddress = (await privDeploy(PublicLibrary.abi, privacyGroupId, PublicLibrary.bytecode)).contractAddress.toLowerCase();
-    let privateLogicBytecode = PrivateLogic.bytecode.replaceAll(/__\$.{34}\$__/g, publicLibraryAddress.replace("0x",""));
+    let privateLogicBytecode = PrivateLogic.bytecode.replace(/__\$.{34}\$__/g, publicLibraryAddress.replace("0x",""));
     
     //Deploy private logic
     console.log("Deploy private storage");
