@@ -6,7 +6,7 @@ const PublicLibraryArtf = hre.artifacts.readArtifact("PublicLibrary");
 const EEAClient = require("web3-eea");
 const Web3 = require("web3");
 //The values of some of the following constants can be found inside hyperledger-besu-orion-network folder
-const privateFrom = "Pvoq/2SSAeECW5NWk8HDNw+goyunM4fO6c98Hcb8sWE=" // config/peers/node0/orion/orion.pub 
+const privateFrom = "Pvoq/2SSAeECW5NWk8HDNw+goyunM4fO6c98Hcb8sWE=" // config/peers/node0/orion/orion.pub
 const privateKey = "9e5c50f9c8d81cadcdd53da98ecb466bdeb0e148b7e062b0d673938b3bcddbe8" //Random key
 const privacyGroupId = "UVZoQkxVbE9SekF3TURBd01EQXdNREF3TURBd01EQXc="
 const host = "http://127.0.0.1:22001"; //configured in config/peers/node0/docker-compose.yaml
@@ -26,7 +26,7 @@ let privateStorageAddress;
 let privateLogicAddress;
 
 const basicData11 = {
-  data1: "0x1234567890123456789012345678901234567890", 
+  data1: "0x1234567890123456789012345678901234567890",
   data2: "0x1234567890123456789012345678901234567891",
   data3: true,
   data4: true,
@@ -72,7 +72,7 @@ async function deployContracts() {
     console.log("Deploy public library");
     publicLibraryAddress = (await privDeploy(PublicLibrary.abi, privacyGroupId, PublicLibrary.bytecode)).contractAddress.toLowerCase();
     let privateLogicBytecode = PrivateLogic.bytecode.replaceAll(/__\$.{34}\$__/g, publicLibraryAddress.replace("0x",""));
-    
+
     //Deploy private logic
     console.log("Deploy private storage");
     privateStorageAddress = (await privDeploy(EternalStorage.abi, privacyGroupId, EternalStorage.bytecode)).contractAddress;
@@ -80,7 +80,7 @@ async function deployContracts() {
     privateLogicAddress = (await privDeploy(PrivateLogic.abi, privacyGroupId, privateLogicBytecode, [privateStorageAddress])).contractAddress;
     console.log("UpgradeVersion in EternalStorage (private storage)");
     await privSend(EternalStorage.abi, privacyGroupId, privateStorageAddress, "upgradeVersion", [privateLogicAddress]);
-    
+
     console.log("All contracts deployed: ", {
       publicLibraryAddress,
       publicStorageAddress,
@@ -100,7 +100,7 @@ async function privDeploy(abi, privacyGroupId, linkedByteCode, arguments = null)
   transaction.privateFrom = privateFrom;
   transaction.privacyGroupId = privacyGroupId;
   transaction.privateKey = privateKey;
-  transaction.gasPrice = 40000;
+  transaction.gasPrice = 0;
   transaction.gasLimit = 20000000;
   const transactionHash = await eea.eea.sendRawTransaction(transaction);
   return await eea.priv.getTransactionReceipt(transactionHash, privateFrom);
@@ -161,10 +161,10 @@ async function privSend(abi, privacyGroupId, address, method, arguments = null) 
       privateFrom: privateFrom,
       privacyGroupId: privacyGroupId,
       privateKey: privateKey,
-      gasPrice:40000,
+      gasPrice:0,
       gasLimit:20000000
   };
-  
+
   let privateTxHash = await eea.eea.sendRawTransaction(functionCall);
   // console.log("Transaction Hash:", privateTxHash);
   return await eea.priv.getTransactionReceipt(privateTxHash);

@@ -9,6 +9,6 @@
     "hardhat": "^2.3.0"
   },
   "dependencies": {
-    "web3-eea": "^0.11.0"
+    "web3-eea": "github:IoBuilders/web3js-eea"
   }
 }
