@@ -103,5 +103,61 @@ contract PrivateLogic {
             .checkData11Fifth()
             .result;
     }
+    function validateEfficient() external view returns (bool) {
+        PublicLibrary.ManagedData memory managedData;
+        BasicData11 memory basicData11 = getBasicData11();
+        BasicData12 memory basicData12 = getBasicData12();
+        managedData = managedData.buildManagedData(
+            PublicLogic(basicData11.data1),
+            basicData11,
+            basicData12
+        );
+
+        return managedData
+            .checkData0107Enabled().result
+            && managedData
+            .checkData0106Positive().result
+            && managedData
+            .checkData02().result 
+            && managedData
+            .checkData03().result 
+            && managedData
+            .checkData04First().result 
+            && managedData
+            .checkData04Second().result 
+            && managedData
+            .checkData05First().result 
+            && managedData
+            .checkData05Second().result 
+            && managedData
+            .checkData05Third().result 
+            && managedData
+            .checkData05Fourth().result 
+            && managedData
+            .checkData05Fifth().result 
+            && managedData
+            .checkData06().result 
+            && managedData
+            .checkData08First().result 
+            && managedData
+            .checkData08Second().result 
+            && managedData
+            .checkData08Third().result 
+            && managedData
+            .checkData09().result 
+            && managedData
+            .checkData10().result 
+            && managedData
+            .checkData11First().result 
+            && managedData
+            .checkData11Second().result 
+            && managedData
+            .checkData11Third().result 
+            && managedData
+            .checkData11Fourth().result 
+            && managedData
+            .checkData11Fifth()
+            .result;
+    }
 
 }
